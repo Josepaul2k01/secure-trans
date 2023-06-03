@@ -123,7 +123,7 @@ class ResetPasswordScreen extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: Container(
-        height: 81.h,
+        height: 200.h,
         width: 375.w,
         decoration: BoxDecoration(
           color: Colors.white,

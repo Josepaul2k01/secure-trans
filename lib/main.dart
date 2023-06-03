@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:pay_now/screens/cards_screen.dart';
 import 'package:pay_now/screens/contacts_screen.dart';
 import 'package:pay_now/screens/home_screen.dart';
 import 'package:pay_now/screens/info_screen.dart';
@@ -43,7 +44,8 @@ class MyApp extends StatelessWidget {
           )),
           fontFamily: 'SF-Pro-Rounded',
         ),
-        home: SplashScreen(),
+        home: CardsScreen(),
+        //SplashScreen(),
       ),
     );
   }

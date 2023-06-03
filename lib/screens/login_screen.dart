@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:pay_now/screens/home_screen.dart';
 import 'package:pay_now/screens/profile_screen.dart';
+import 'package:pay_now/screens/reset1.dart';
+import 'package:pay_now/screens/reset_password_screen.dart';
 import 'package:pay_now/widgets/primary_button.dart';
 import 'package:pay_now/widgets/vertical_spacer.dart';
 
@@ -181,7 +184,7 @@ class LoginScreen extends StatelessWidget {
     if (_username == _password) {
       //final _sharedprefes = await SharedPreferences.getInstance();
       //await _sharedprefes.setBool(Save_key,true);
-      Navigator.of(ctx).pushReplacement(MaterialPageRoute(builder: (ctx1)=>ProfileScreen()));
+      Navigator.of(ctx).pushReplacement(MaterialPageRoute(builder: (ctx1)=>HomeScreen()));
     } else {
       final _errorMessage = 'Username password doesnot match';
         ScaffoldMessenger.of(ctx).showSnackBar(SnackBar(

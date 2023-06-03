@@ -70,14 +70,14 @@ class HomeScreen extends StatelessWidget {
         Stack(
           children: [
             Container(
-              height: 262.h,
-              width: 375.w,
+              height: 300.h,
+              width: 400.w,
               decoration: BoxDecoration(
                 color: Theme.of(context).colorScheme.primary,
               ),
             ),
             CustomPaint(
-              size: Size(375.w, 262.h),
+              size: Size(400.w, 300.h),
               painter: DrawTriangleShape(),
             ),
             Positioned(
@@ -92,12 +92,12 @@ class HomeScreen extends StatelessWidget {
                       "Dashboard",
                       style: TextStyle(
                         color: Colors.white,
-                        fontSize: 20.sp,
-                        fontWeight: FontWeight.w500,
+                        fontSize: 30.sp,
+                        fontWeight: FontWeight.w700,
                       ),
                     ),
                     CircleAvatar(
-                      radius: 20.w,
+                      radius: 30.w,
                       backgroundImage:
                           const AssetImage("assets/images/Profile Picture.png"),
                     ),
@@ -110,9 +110,9 @@ class HomeScreen extends StatelessWidget {
               child: Padding(
                 padding: EdgeInsets.symmetric(horizontal: 30.w),
                 child: Text(
-                  "Hi, Amanda!",
+                  "Hi, ANN!",
                   style: TextStyle(
-                    color: Colors.white.withOpacity(0.5),
+                    color: Colors.white.withOpacity(0.8),
                     fontSize: 16.sp,
                     fontWeight: FontWeight.w500,
                   ),
