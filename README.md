@@ -1,4 +1,4 @@
-# pay_now
+# secure-trans
 
 E-Wallet App
 
