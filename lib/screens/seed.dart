@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pay_now/main.dart';
+import 'package:pay_now/screens/login_screen.dart';
 import 'package:pay_now/widgets/vertical_spacer.dart';
+
+import 'bank.dart';
 
 class ResetPasswordScreen1 extends StatelessWidget {
   const ResetPasswordScreen1({Key? key}) : super(key: key);
@@ -12,7 +15,7 @@ class ResetPasswordScreen1 extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar:AppBar(
-        title:Text("Register Key"),
+        title:Text("Register Seed"),
         titleSpacing: 00.0,
         centerTitle: true,
         toolbarHeight: 60.2,
@@ -37,7 +40,7 @@ class ResetPasswordScreen1 extends StatelessWidget {
               
               children: [
                 Text(
-                  "Enter your Unique Key to Activate Account",
+                  "Enter your Unique Key Value to Activate Account",
                   style: TextStyle(
                     fontSize: 16.sp,
                     color: const Color(0xFF1A1A1A),
@@ -46,7 +49,7 @@ class ResetPasswordScreen1 extends StatelessWidget {
                 ),
                 const VerticalSpacer(height: 100),
                 Text(
-                  "Key",
+                  "Seed",
                   style: TextStyle(
                     fontSize: 16.sp,
                     color: const Color(0xFF1A1A1A),
@@ -108,7 +111,11 @@ class ResetPasswordScreen1 extends StatelessWidget {
         ),
         child: Center(
           child: ElevatedButton(
-            onPressed: (){},
+            onPressed: (){
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                    return LoginScreen();
+                  }));
+            },
             child: Container(
               height: 49.h,
               width: 250.w,

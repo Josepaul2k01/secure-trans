@@ -1,13 +1,30 @@
+
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:pay_now/screens/login_screen.dart';
-import 'package:pay_now/screens/reset1.dart';
-import 'package:pay_now/widgets/primary_button.dart';
 import 'package:pay_now/widgets/vertical_spacer.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'bank.dart';
 
 class SignupScreen extends StatelessWidget {
   SignupScreen({Key? key}) : super(key: key);
 
+  FirebaseAuth auth = FirebaseAuth.instance;
+  FirebaseFirestore db = FirebaseFirestore.instance;
+
+  final TextEditingController _emailcontroller = TextEditingController();
+  final TextEditingController _passwordcontroller = TextEditingController();
+/* void _addTask(){
+    FirebaseFirestore.instance.collection("userdetails").add({
+      "username":_emailcontroller.text
+    });
+  }*/
+
+  signUp()async{
+    await auth.createUserWithEmailAndPassword(email:_emailcontroller.text, password:_passwordcontroller.text);
+  }
 
 
   @override
@@ -94,6 +111,7 @@ class SignupScreen extends StatelessWidget {
               Expanded(
                 flex:1,
                 child: TextField(
+                  controller: _emailcontroller,
                   decoration: InputDecoration(
                     hintText: "Enter your email",
                     hintStyle: TextStyle(
@@ -123,6 +141,7 @@ class SignupScreen extends StatelessWidget {
               Expanded(
                 flex:1,
                 child: TextField(
+                  controller: _passwordcontroller,
                   decoration: InputDecoration(
                     hintText: "Enter your password",
                     hintStyle: TextStyle(
@@ -181,12 +200,19 @@ class SignupScreen extends StatelessWidget {
                 ),
               ),
               const VerticalSpacer(height: 20),
-              ElevatedButton(child:Text("Create account"),
-              onPressed: (){
-                Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-      return ResetPasswordScreen1();
-    }));
-              },),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  ElevatedButton(
+                  child:const Text("Next"),
+                  onPressed: (){
+                    signUp();
+                    //print(_emailcontroller.text);
+                  /* Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                    return BankScreen();
+                  }));*/
+                },)] ,
+              ),
               const VerticalSpacer(height: 10),
               Expanded(
                 flex:1,
@@ -209,7 +235,6 @@ class SignupScreen extends StatelessWidget {
       ),
     );
   }
-  
 }
     
 

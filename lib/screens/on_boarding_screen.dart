@@ -57,8 +57,14 @@ class OnBoardingHeader extends StatelessWidget {
               ),
             ),
             index != 3
-                ? InkWell(
-                    onTap: () {},
+                ? TextButton(
+                    onPressed: () {
+                      Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (context) {
+                    return LoginSignupScreen();
+                  }));
+
+                    },
                     child: Text(
                       'Skip',
                       style: TextStyle(

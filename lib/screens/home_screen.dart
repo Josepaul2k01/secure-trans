@@ -183,17 +183,17 @@ class HomeScreen extends StatelessWidget {
             ),
           ],
         ),
-        const VerticalSpacer(height: 32),
+        //const VerticalSpacer(height: 10),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 15.w),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              InkWell(
-                onTap: () {},
+              ElevatedButton(
+                onPressed: () {},
                 child: Container(
-                  height: 49.h,
-                  width: 165.w,
+                  height: 40.h,
+                  width: 50.w,
                   decoration: BoxDecoration(
                     color: Theme.of(context).colorScheme.secondary,
                     borderRadius: BorderRadius.circular(10.w),
@@ -202,8 +202,8 @@ class HomeScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       SizedBox(
-                        width: 21.w,
-                        height: 21.h,
+                        width: 10.w,
+                        height: 10.h,
                         child: FittedBox(
                           child: SvgPicture.asset(
                             "assets/images/send_icon.svg",
@@ -223,11 +223,11 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              InkWell(
-                onTap: () {},
+              ElevatedButton(
+                onPressed: () {},
                 child: Container(
-                  height: 49.h,
-                  width: 165.w,
+                  height: 10.h,
+                  width: 10.w,
                   decoration: BoxDecoration(
                     color: Theme.of(context).colorScheme.primary,
                     borderRadius: BorderRadius.circular(10.w),
@@ -236,8 +236,8 @@ class HomeScreen extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       SizedBox(
-                        width: 21.w,
-                        height: 21.h,
+                        width: 10.w,
+                        height: 10.h,
                         child: FittedBox(
                           child: SvgPicture.asset(
                             "assets/images/request_icon.svg",
@@ -261,7 +261,7 @@ class HomeScreen extends StatelessWidget {
             ],
           ),
         ),
-        const VerticalSpacer(height: 32),
+        const VerticalSpacer(height: 12),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 15.w),
           child: Row(
@@ -296,7 +296,7 @@ class HomeScreen extends StatelessWidget {
   List<Widget> _buildTransactionsList() {
     if (transations.isNotEmpty) {
       return [
-        const VerticalSpacer(height: 16),
+        const VerticalSpacer(height: 1),
         Expanded(
           child: SingleChildScrollView(
             child: Padding(
@@ -307,7 +307,7 @@ class HomeScreen extends StatelessWidget {
                 physics: const NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
                 separatorBuilder: (context, index) => const VerticalSpacer(
-                  height: 16,
+                  height: 1,
                 ),
                 itemBuilder: (context, index) => TransactionCard(
                   transaction: transations[index],
@@ -319,7 +319,7 @@ class HomeScreen extends StatelessWidget {
       ];
     } else {
       return [
-        const VerticalSpacer(height: 89),
+        const VerticalSpacer(height: 10),
         SvgPicture.asset("assets/images/empty_illustration.svg"),
         const VerticalSpacer(height: 16),
         Text(
@@ -350,8 +350,8 @@ class NavigationButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 70.h,
-      width: 82.w,
+      height: 10.h,
+      width: 12.w,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -397,7 +397,7 @@ class TransactionCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 49.h,
+      height: 10.h,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [

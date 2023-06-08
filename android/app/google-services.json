@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "101658983644",
+    "project_id": "trans-b5d3b",
+    "storage_bucket": "trans-b5d3b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:101658983644:android:43c08b1ccc751542098819",
+        "android_client_info": {
+          "package_name": "com.project.securetrans"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "101658983644-p98l2vgq02vs00313k4pi48e06ov9hl2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA7v8QTwE1GGlLxIFhGpJXNtuDPN3IfSik"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "101658983644-p98l2vgq02vs00313k4pi48e06ov9hl2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

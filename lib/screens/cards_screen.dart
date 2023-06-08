@@ -139,7 +139,7 @@ class CardsScreen extends StatelessWidget {
                 ),
                 const HorizontalSpacer(width: 6),
                 Container(
-                  width: 6.w,
+                  width: 10.w,
                   height: 6.h,
                   decoration: BoxDecoration(
                       color: const Color(0xFF8FA1B4).withOpacity(0.2965),

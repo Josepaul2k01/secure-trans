@@ -37,16 +37,16 @@ class LoginSignupScreen extends StatelessWidget {
               height: 734.h,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: Theme.of(context).colorScheme.primary,
+                color:Colors.grey[400],
               ),
             ),
           ),
           Positioned(
             top: 212.h,
-            left: 134.w,
+            left: 60.w,
             child: SizedBox(
-              width: 106.w,
-              height: 137.h,
+              width: 250.w,
+              height: 250.h,
               child: FittedBox(
                 child: Image.asset('assets/images/HLogo.png'),
                 fit: BoxFit.fill,
@@ -60,7 +60,7 @@ class LoginSignupScreen extends StatelessWidget {
               textAlign: TextAlign.center,
               text: TextSpan(
                 style: TextStyle(
-                  fontSize: 14.sp,
+                  fontSize: 17.sp,
                   color: Colors.white,
                   fontWeight: FontWeight.w300,
                 ),

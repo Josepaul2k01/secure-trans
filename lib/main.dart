@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:pay_now/screens/add_card_screen.dart';
+import 'package:pay_now/screens/bank.dart';
 import 'package:pay_now/screens/cards_screen.dart';
 import 'package:pay_now/screens/contacts_screen.dart';
 import 'package:pay_now/screens/home_screen.dart';
@@ -12,8 +14,11 @@ import 'package:pay_now/screens/signup_screen.dart';
 import 'package:pay_now/screens/splash_screen.dart';
 import 'package:pay_now/screens/transactions_screen.dart';
 import 'package:pay_now/widgets/vertical_spacer.dart';
-
-void main() {
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
@@ -44,8 +49,7 @@ class MyApp extends StatelessWidget {
           )),
           fontFamily: 'SF-Pro-Rounded',
         ),
-        home: CardsScreen(),
-        //SplashScreen(),
+        home:SplashScreen(),
       ),
     );
   }
