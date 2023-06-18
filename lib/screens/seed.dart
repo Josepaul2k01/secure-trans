@@ -16,12 +16,12 @@ class ResetPasswordScreen1 extends StatelessWidget {
  final TextEditingController _seedcontroller = TextEditingController();
  
 
-  void _addTask()async {
+ /* void _addTask()async {
     FirebaseFirestore.setLoggingEnabled(true);
     await FirebaseFirestore.instance.collection("seedValue").add({
       "seed":_seedcontroller.text
     });
-  }
+  }*/
 
   @override
   Widget build(BuildContext context) {
@@ -107,7 +107,7 @@ class ResetPasswordScreen1 extends StatelessWidget {
           SizedBox(height:50),
           ElevatedButton(onPressed: (){
             print(_seedcontroller.text);
-            _addTask();
+            //_addTask();
             }, 
             child: Text("register"),)
         ],
