@@ -19,12 +19,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ScreenUtilInit(
-      designSize: const Size(375, 812),
-      minTextAdapt: true,
-      splitScreenMode: true,
-      builder: (_) => MaterialApp(
-        useInheritedMediaQuery: true,
+    return  Builder(builder:(ctx){
+      ScreenUtil.init(ctx,designSize: Size(375, 812));
+      return MaterialApp(
+        
+        //useInheritedMediaQuery: true,
         debugShowCheckedModeBanner: false,
         title: 'Secure Trans',
         theme: ThemeData(
@@ -43,7 +42,8 @@ class MyApp extends StatelessWidget {
           fontFamily: 'SF-Pro-Rounded',
         ),
         home:SplashScreen(),
-      ),
+      );
+    }
     );
   }
 }
