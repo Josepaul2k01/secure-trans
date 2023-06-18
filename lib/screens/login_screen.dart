@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:pay_now/screens/home_screen.dart';
+import 'package:pay_now/screens/home.dart';
+
 import 'package:pay_now/screens/profile_screen.dart';
 import 'package:pay_now/screens/seed.dart';
 import 'package:pay_now/screens/reset_password_screen.dart';
 import 'package:pay_now/widgets/primary_button.dart';
 import 'package:pay_now/widgets/vertical_spacer.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:pay_now/screens/home.dart';
 class LoginScreen extends StatelessWidget {
   LoginScreen({Key? key}) : super(key: key);
 

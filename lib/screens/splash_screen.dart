@@ -30,7 +30,7 @@ class _SplashScreenState extends State<SplashScreen> {
     );
   }
     Future<void> gotoLoginsignup() async {
-    await Future.delayed(Duration(seconds: 3));
+    await Future.delayed(Duration(seconds: 6));
     Navigator.of(context).push(MaterialPageRoute(builder: (context) {
       return OnBoardingScreen();
     }));

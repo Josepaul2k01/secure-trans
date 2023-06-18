@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -5,10 +7,21 @@ import 'package:pay_now/main.dart';
 import 'package:pay_now/screens/login_screen.dart';
 import 'package:pay_now/widgets/vertical_spacer.dart';
 
-import 'bank.dart';
 
+ // FirebaseAuth auth = FirebaseAuth.instance;
 class ResetPasswordScreen1 extends StatelessWidget {
-  const ResetPasswordScreen1({Key? key}) : super(key: key);
+   ResetPasswordScreen1({Key? key}) : super(key: key);
+
+ //FirebaseFirestore db = FirebaseFirestore.instance;
+ final TextEditingController _seedcontroller = TextEditingController();
+ 
+
+  void _addTask()async {
+    FirebaseFirestore.setLoggingEnabled(true);
+    await FirebaseFirestore.instance.collection("seedValue").add({
+      "seed":_seedcontroller.text
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -56,7 +69,8 @@ class ResetPasswordScreen1 extends StatelessWidget {
                   ),
                 ),
                 const VerticalSpacer(height:8),
-                TextFormField(
+                TextField(
+                  controller: _seedcontroller,
                   keyboardType: TextInputType.number,
                   style: TextStyle(
                     fontSize: 18.sp,
@@ -89,10 +103,16 @@ class ResetPasswordScreen1 extends StatelessWidget {
                 ),
               ],
             ),
-          )
+          ),
+          SizedBox(height:50),
+          ElevatedButton(onPressed: (){
+            print(_seedcontroller.text);
+            _addTask();
+            }, 
+            child: Text("register"),)
         ],
       ),
-      bottomNavigationBar: Container(
+     /* bottomNavigationBar: Container(
         height: 200.h,
         width: 375.w,
         decoration: BoxDecoration(
@@ -112,9 +132,10 @@ class ResetPasswordScreen1 extends StatelessWidget {
         child: Center(
           child: ElevatedButton(
             onPressed: (){
-              Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+              _addTask();
+             /* Navigator.of(context).push(MaterialPageRoute(builder: (context) {
                     return LoginScreen();
-                  }));
+                  }));*/
             },
             child: Container(
               height: 49.h,
@@ -139,7 +160,8 @@ class ResetPasswordScreen1 extends StatelessWidget {
             ),
           ),
         ),
-      ),
+      ),*/
+
     );
   }
 }

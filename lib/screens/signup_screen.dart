@@ -3,28 +3,33 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:pay_now/widgets/vertical_spacer.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'bank.dart';
+import 'package:get/get.dart';
 
 class SignupScreen extends StatelessWidget {
   SignupScreen({Key? key}) : super(key: key);
 
-  FirebaseAuth auth = FirebaseAuth.instance;
-  FirebaseFirestore db = FirebaseFirestore.instance;
+  //FirebaseAuth auth = FirebaseAuth.instance;
+  //FirebaseFirestore db = FirebaseFirestore.instance;
 
-  final TextEditingController _emailcontroller = TextEditingController();
-  final TextEditingController _passwordcontroller = TextEditingController();
-/* void _addTask(){
-    FirebaseFirestore.instance.collection("userdetails").add({
-      "username":_emailcontroller.text
-    });
-  }*/
+  //final TextEditingController _emailcontroller = TextEditingController();
+  //final TextEditingController _passwordcontroller = TextEditingController();
+  
+//void _addTask(){
+    //FirebaseFirestore.instance.collection("userdetails").add({
+     // "username":_emailcontroller.text
+   // });
+  //}
 
-  signUp()async{
+ /* signUp()async{
     await auth.createUserWithEmailAndPassword(email:_emailcontroller.text, password:_passwordcontroller.text);
-  }
+    //Get.to(()=BankScreen());
+
+  }*/
 
 
   @override
@@ -111,7 +116,7 @@ class SignupScreen extends StatelessWidget {
               Expanded(
                 flex:1,
                 child: TextField(
-                  controller: _emailcontroller,
+                  //controller: _emailcontroller,
                   decoration: InputDecoration(
                     hintText: "Enter your email",
                     hintStyle: TextStyle(
@@ -141,7 +146,7 @@ class SignupScreen extends StatelessWidget {
               Expanded(
                 flex:1,
                 child: TextField(
-                  controller: _passwordcontroller,
+                  //controller: _passwordcontroller,
                   decoration: InputDecoration(
                     hintText: "Enter your password",
                     hintStyle: TextStyle(
@@ -206,11 +211,12 @@ class SignupScreen extends StatelessWidget {
                   ElevatedButton(
                   child:const Text("Next"),
                   onPressed: (){
-                    signUp();
+                    //signUp();
+                    //_addTask();
                     //print(_emailcontroller.text);
-                  /* Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                   Navigator.of(context).push(MaterialPageRoute(builder: (context) {
                     return BankScreen();
-                  }));*/
+                  }));
                 },)] ,
               ),
               const VerticalSpacer(height: 10),

@@ -15,7 +15,7 @@ class LoginSignupScreen extends StatelessWidget {
           Container(
             width: 375.w,
             height: 812.h,
-            color: Colors.white,
+            color: Colors.teal[100],
           ),
           Positioned(
             top: -120.h,
@@ -37,7 +37,7 @@ class LoginSignupScreen extends StatelessWidget {
               height: 734.h,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color:Colors.grey[400],
+                color:Colors.white,
               ),
             ),
           ),
@@ -61,7 +61,7 @@ class LoginSignupScreen extends StatelessWidget {
               text: TextSpan(
                 style: TextStyle(
                   fontSize: 17.sp,
-                  color: Colors.white,
+                  color: Colors.black,
                   fontWeight: FontWeight.w300,
                 ),
                 children: const [

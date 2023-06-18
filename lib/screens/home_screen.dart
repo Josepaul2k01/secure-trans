@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pay_now/widgets/horizontal_spacer.dart';
 import 'package:pay_now/widgets/vertical_spacer.dart';
-import 'package:intl/intl.dart';
+
 
 enum TransactionType { send, request }
 
@@ -22,10 +22,10 @@ class Transation {
       required this.transactionType});
 }
 
-class HomeScreen extends StatelessWidget {
-  HomeScreen({Key? key}) : super(key: key);
+class Home_Screen extends StatelessWidget {
+  Home_Screen({Key? key}) : super(key: key);
 
-  final List<Transation> transations = [
+  /*final List<Transation> transations = [
     Transation(
       userImage: 'yara.png',
       userName: 'Yara Khalil',
@@ -61,11 +61,12 @@ class HomeScreen extends StatelessWidget {
       amount: 09.00,
       transactionType: TransactionType.request,
     ),
-  ];
+  ];*/
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return Scaffold(
+      body:Column(
       children: [
         Stack(
           children: [
@@ -183,124 +184,121 @@ class HomeScreen extends StatelessWidget {
             ),
           ],
         ),
-        //const VerticalSpacer(height: 10),
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 15.w),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              ElevatedButton(
-                onPressed: () {},
-                child: Container(
-                  height: 40.h,
-                  width: 50.w,
-                  decoration: BoxDecoration(
-                    color: Theme.of(context).colorScheme.secondary,
-                    borderRadius: BorderRadius.circular(10.w),
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      SizedBox(
-                        width: 10.w,
-                        height: 10.h,
-                        child: FittedBox(
-                          child: SvgPicture.asset(
-                            "assets/images/send_icon.svg",
-                          ),
-                          fit: BoxFit.fill,
+        //
+        VerticalSpacer(height: 50),
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          //mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            ElevatedButton(
+              onPressed: () {},
+              child: Container(
+                height: 40.h,
+                width: 100.w,
+                decoration: BoxDecoration(
+                  color: Theme.of(context).colorScheme.primary,
+                  borderRadius: BorderRadius.circular(10.w),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SizedBox(
+                      width: 10.w,
+                      height: 10.h,
+                      child: FittedBox(
+                        child: SvgPicture.asset(
+                          "assets/images/send_icon.svg",
                         ),
+                        fit: BoxFit.fill,
                       ),
-                      const HorizontalSpacer(width: 4),
-                      Text(
-                        "Send Money",
-                        style: TextStyle(
-                          fontSize: 14.sp,
-                          fontWeight: FontWeight.w500,
-                        ),
+                    ),
+                    const HorizontalSpacer(width: 4),
+                    Text(
+                      "Send Money",
+                      style: TextStyle(
+                        fontSize: 14.sp,
+                        fontWeight: FontWeight.w500,
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
-              ElevatedButton(
-                onPressed: () {},
-                child: Container(
-                  height: 10.h,
-                  width: 10.w,
-                  decoration: BoxDecoration(
-                    color: Theme.of(context).colorScheme.primary,
-                    borderRadius: BorderRadius.circular(10.w),
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      SizedBox(
-                        width: 10.w,
-                        height: 10.h,
-                        child: FittedBox(
-                          child: SvgPicture.asset(
-                            "assets/images/request_icon.svg",
-                          ),
-                          fit: BoxFit.fill,
-                        ),
-                      ),
-                      const HorizontalSpacer(width: 4),
-                      Text(
-                        "Request Money",
-                        style: TextStyle(
-                          fontSize: 14.sp,
-                          fontWeight: FontWeight.w500,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ],
-                  ),
+            ),
+            ElevatedButton(
+              onPressed: () {},
+              child: Container(
+                height: 40.h,
+                width: 100.w,
+                decoration: BoxDecoration(
+                  color: Theme.of(context).colorScheme.primary,
+                  borderRadius: BorderRadius.circular(10.w),
                 ),
-              )
-            ],
-          ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SizedBox(
+                      width: 10.w,
+                      height: 10.h,
+                      child: FittedBox(
+                        child: SvgPicture.asset(
+                          "assets/images/request_icon.svg",
+                        ),
+                        fit: BoxFit.fill,
+                      ),
+                    ),
+                    const HorizontalSpacer(width: 4),
+                    Text(
+                      "Request Money",
+                      style: TextStyle(
+                        fontSize: 14.sp,
+                        fontWeight: FontWeight.w500,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            )
+          ],
         ),
         const VerticalSpacer(height: 12),
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 15.w),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                "Last Transactions",
+        /*Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              "Last Transactions",
+              style: TextStyle(
+                fontWeight: FontWeight.w700,
+                fontSize: 16.sp,
+              ),
+            ),
+            InkWell(
+              onTap: () {},
+              child: Text(
+                "View All",
                 style: TextStyle(
-                  fontWeight: FontWeight.w700,
                   fontSize: 16.sp,
+                  fontWeight: FontWeight.w500,
+                  color: Theme.of(context).colorScheme.primary,
                 ),
               ),
-              InkWell(
-                onTap: () {},
-                child: Text(
-                  "View All",
-                  style: TextStyle(
-                    fontSize: 16.sp,
-                    fontWeight: FontWeight.w500,
-                    color: Theme.of(context).colorScheme.primary,
-                  ),
-                ),
-              )
-            ],
-          ),
-        ),
-        ..._buildTransactionsList(),
+            )
+          ],
+        ),*/
+        //..._buildTransactionsList(),
       ],
+    )
     );
   }
 
-  List<Widget> _buildTransactionsList() {
+  /*List<Widget> _buildTransactionsList() {
     if (transations.isNotEmpty) {
       return [
         const VerticalSpacer(height: 1),
         Expanded(
           child: SingleChildScrollView(
             child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 15.w),
+              padding: EdgeInsets.symmetric(horizontal: 50.w),
               child: ListView.separated(
                 padding: EdgeInsets.zero,
                 itemCount: transations.length,
@@ -319,7 +317,7 @@ class HomeScreen extends StatelessWidget {
       ];
     } else {
       return [
-        const VerticalSpacer(height: 10),
+        const VerticalSpacer(height: 30),
         SvgPicture.asset("assets/images/empty_illustration.svg"),
         const VerticalSpacer(height: 16),
         Text(
@@ -332,7 +330,7 @@ class HomeScreen extends StatelessWidget {
         )
       ];
     }
-  }
+  }*/
 }
 
 class NavigationButton extends StatelessWidget {
@@ -381,7 +379,7 @@ class NavigationButton extends StatelessWidget {
   }
 }
 
-class TransactionCard extends StatelessWidget {
+/*class TransactionCard extends StatelessWidget {
   const TransactionCard({
     Key? key,
     required this.transaction,
@@ -472,7 +470,7 @@ class TransactionCard extends StatelessWidget {
       ),
     );
   }
-}
+}*/
 
 class DrawTriangleShape extends CustomPainter {
   Paint painter = Paint()
@@ -496,3 +494,4 @@ class DrawTriangleShape extends CustomPainter {
     return false;
   }
 }
+
