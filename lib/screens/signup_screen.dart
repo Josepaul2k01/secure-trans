@@ -18,7 +18,8 @@ class _SignupScreenState extends State<SignupScreen> {
 
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  final TextEditingController _retypePasswordController =TextEditingController();
+  final TextEditingController _retypePasswordController =
+      TextEditingController();
 
   bool _isPasswordVisible = false;
   bool _isRetypePasswordVisible = false;
@@ -199,11 +200,32 @@ class _SignupScreenState extends State<SignupScreen> {
                     onPressed: () {
                       if (_passwordController.text ==
                           _retypePasswordController.text) {
-                        signUp();
-                        Navigator.of(context)
-                            .push(MaterialPageRoute(builder: (context) {
-                          return BankScreen();
-                        }));
+                        try {
+                          signUp();
+                          Navigator.of(context)
+                              .push(MaterialPageRoute(builder: (context) {
+                            return BankScreen();
+                          }));
+                        } catch (e) {
+                          showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return AlertDialog(
+                                title: Text('Error'),
+                                content: Text(
+                                    'Failed to create an account. Please try again.'),
+                                actions: <Widget>[
+                                  TextButton(
+                                    child: Text('OK'),
+                                    onPressed: () {
+                                      Navigator.of(context).pop();
+                                    },
+                                  ),
+                                ],
+                              );
+                            },
+                          );
+                        }
                       } else {
                         setState(() {
                           _isPasswordMismatch = true;
@@ -342,4 +364,4 @@ class _RetypePasswordTextFieldState extends State<RetypePasswordTextField> {
       ),
     );
   }
-} 
+}

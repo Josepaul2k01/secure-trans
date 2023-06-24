@@ -17,14 +17,29 @@ class _BankScreenState extends State<BankScreen> {
   final TextEditingController seedController = TextEditingController();
 
   late DatabaseReference _userRef;
+  User? userData;
 
   @override
   void initState() {
     super.initState();
-    _userRef = FirebaseDatabase.instance
-        .ref()
-        .child('users')
-        .child(FirebaseAuth.instance.currentUser!.uid);
+    checkCurrentUser();
+    _userRef = FirebaseDatabase.instance.ref().child('users');
+  }
+
+  Future<void> checkCurrentUser() async {
+    try {
+      User? user = FirebaseAuth.instance.currentUser;
+      if (user != null) {
+        print("suc$user");
+        setState(() {
+          userData = user;
+        });
+      } else {
+        print("error$user");
+      }
+    } catch (e) {
+      print("error$e");
+    }
   }
 
   @override
@@ -33,6 +48,28 @@ class _BankScreenState extends State<BankScreen> {
     accountNumberController.dispose();
     seedController.dispose();
     super.dispose();
+  }
+
+  void _showSnackBar(String message) {
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      content: Text(message),
+    ));
+  }
+
+  bool _validateFields() {
+    if (nameController.text.isEmpty) {
+      _showSnackBar('Please enter your name');
+      return false;
+    }
+    if (accountNumberController.text.isEmpty) {
+      _showSnackBar('Please enter recipient account number');
+      return false;
+    }
+    if (seedController.text.isEmpty) {
+      _showSnackBar('Please enter seed value');
+      return false;
+    }
+    return true;
   }
 
   @override
@@ -136,19 +173,24 @@ class _BankScreenState extends State<BankScreen> {
               SizedBox(height: 24.h),
               ElevatedButton(
                 onPressed: () {
-                  _userRef.push().set({
-                    'name': nameController.text,
-                    'accountNumber': accountNumberController.text,
-                    'seed': seedController.text,
-                  }).then((_) {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) {
-                        return HomeScreen();
-                      }),
-                    );
-                  }).catchError((error) {
-                    print(error);
-                  });
+                  if (_validateFields()) {
+                    User? user = FirebaseAuth.instance.currentUser;
+                    _userRef.push().set({
+                      'user_id': user?.uid,
+                      'name': nameController.text,
+                      'accountNumber': accountNumberController.text,
+                      'user_seed': seedController.text,
+                      'bank_seed': seedController.text
+                    }).then((_) {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) {
+                          return HomeScreen();
+                        }),
+                      );
+                    }).catchError((error) {
+                      print("Error: $error");
+                    });
+                  }
                 },
                 child: Text('Register'),
               ),

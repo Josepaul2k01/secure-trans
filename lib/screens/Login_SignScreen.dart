@@ -1,11 +1,45 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:pay_now/screens/home.dart';
 import 'package:pay_now/screens/signup_screen.dart';
 import 'LoginScreen.dart';
 import 'bankserver.dart';
 
-class Login_Signup extends StatelessWidget {
+class Login_Signup extends StatefulWidget {
   Login_Signup({Key? key}) : super(key: key);
+
+  @override
+  State<Login_Signup> createState() => _Login_SignupState();
+}
+
+class _Login_SignupState extends State<Login_Signup> {
+  User? userData;
+  @override
+  void initState() {
+    super.initState();
+    checkCurrentUser();
+  }
+
+  Future<void> checkCurrentUser() async {
+    try {
+      User? user = FirebaseAuth.instance.currentUser;
+      if (user != null) {
+        setState(() {
+          userData = user;
+        });
+        Navigator.of(context).push(
+          MaterialPageRoute(builder: (context) {
+            return HomeScreen();
+          }),
+        );
+      } else {
+        print("error$user");
+      }
+    } catch (e) {
+      print("error$e");
+    }
+  }
 
   @override
   Widget build(BuildContext context) {

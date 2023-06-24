@@ -1,5 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:pay_now/screens/home.dart';
 import 'package:pay_now/screens/on_boarding_screen.dart';
 
 import 'LoginScreen.dart';
@@ -10,11 +12,14 @@ class SplashScreen extends StatefulWidget {
   @override
   State<SplashScreen> createState() => _SplashScreenState();
 }
+
 class _SplashScreenState extends State<SplashScreen> {
+  User? userData;
+
   @override
   void initState() {
-    gotoLoginsignup();
     super.initState();
+    gotoLoginsignup();
   }
 
   @override
@@ -29,11 +34,20 @@ class _SplashScreenState extends State<SplashScreen> {
       ),
     );
   }
-    Future<void> gotoLoginsignup() async {
+
+  Future<void> gotoLoginsignup() async {
+    User? user = FirebaseAuth.instance.currentUser;
     await Future.delayed(Duration(seconds: 6));
-    Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-      return OnBoardingScreen();
-    }));
+    if (user != null) {
+      Navigator.of(context).push(
+        MaterialPageRoute(builder: (context) {
+          return HomeScreen();
+        }),
+      );
+    } else {
+      Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+        return OnBoardingScreen();
+      }));
+    }
   }
 }
- 

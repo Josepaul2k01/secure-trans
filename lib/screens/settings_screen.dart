@@ -1,11 +1,14 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:pay_now/screens/Login_SignScreen.dart';
 import 'package:pay_now/widgets/horizontal_spacer.dart';
 import 'package:pay_now/widgets/vertical_spacer.dart';
 
 class SettingsScreen extends StatelessWidget {
-  const SettingsScreen({Key? key}) : super(key: key);
+  SettingsScreen({Key? key}) : super(key: key);
+  final FirebaseAuth _auth = FirebaseAuth.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -152,14 +155,22 @@ class SettingsScreen extends StatelessWidget {
                         ),
                       ),
                       const HorizontalSpacer(width: 16),
-                      Text(
-                        "Logout",
-                        style: TextStyle(
-                          fontSize: 16.sp,
-                          fontWeight: FontWeight.w500,
-                          color: const Color(0xFF1A1A1A),
-                        ),
-                      ),
+                      TextButton(
+                          onPressed: () async {
+                            await _auth.signOut();
+                            Navigator.of(context)
+                                .push(MaterialPageRoute(builder: (context) {
+                              return Login_Signup();
+                            }));
+                          },
+                          child: Text(
+                            "Logout",
+                            style: TextStyle(
+                              fontSize: 16.sp,
+                              fontWeight: FontWeight.w500,
+                              color: const Color(0xFF1A1A1A),
+                            ),
+                          )),
                     ],
                   ),
                 ],
