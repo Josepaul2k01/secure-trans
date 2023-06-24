@@ -1,36 +1,40 @@
-
-
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import 'package:pay_now/widgets/vertical_spacer.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'bank.dart';
-import 'package:get/get.dart';
+import 'BnakDetail.dart';
 
-class SignupScreen extends StatelessWidget {
-  SignupScreen({Key? key}) : super(key: key);
+class SignupScreen extends StatefulWidget {
+  const SignupScreen({Key? key}) : super(key: key);
 
-  //FirebaseAuth auth = FirebaseAuth.instance;
-  //FirebaseFirestore db = FirebaseFirestore.instance;
+  @override
+  _SignupScreenState createState() => _SignupScreenState();
+}
 
-  //final TextEditingController _emailcontroller = TextEditingController();
-  //final TextEditingController _passwordcontroller = TextEditingController();
-  
-//void _addTask(){
-    //FirebaseFirestore.instance.collection("userdetails").add({
-     // "username":_emailcontroller.text
-   // });
-  //}
+class _SignupScreenState extends State<SignupScreen> {
+  FirebaseAuth auth = FirebaseAuth.instance;
+  FirebaseFirestore db = FirebaseFirestore.instance;
 
- /* signUp()async{
-    await auth.createUserWithEmailAndPassword(email:_emailcontroller.text, password:_passwordcontroller.text);
-    //Get.to(()=BankScreen());
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _retypePasswordController =TextEditingController();
 
-  }*/
+  bool _isPasswordVisible = false;
+  bool _isRetypePasswordVisible = false;
+  bool _isPasswordMismatch = false;
 
+  signUp() async {
+    if (_passwordController.text == _retypePasswordController.text) {
+      await auth.createUserWithEmailAndPassword(
+          email: _emailController.text, password: _passwordController.text);
+      // Get.to(()=BankScreen());
+    } else {
+      setState(() {
+        _isPasswordMismatch = true;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +57,7 @@ class SignupScreen extends StatelessWidget {
             children: [
               const VerticalSpacer(height: 50),
               Expanded(
-                flex:1,
+                flex: 1,
                 child: Text(
                   "Signup and Start Transfering",
                   style: TextStyle(
@@ -64,7 +68,7 @@ class SignupScreen extends StatelessWidget {
               ),
               const VerticalSpacer(height: 30),
               Expanded(
-                flex:1,
+                flex: 1,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -94,7 +98,7 @@ class SignupScreen extends StatelessWidget {
                       ),
                       child: Center(
                         child: Text(
-                          "Facebook",
+                          "Microsoft",
                           style: TextStyle(
                             fontSize: 14.sp,
                             fontWeight: FontWeight.w500,
@@ -114,9 +118,9 @@ class SignupScreen extends StatelessWidget {
               ),
               const VerticalSpacer(height: 8),
               Expanded(
-                flex:1,
+                flex: 1,
                 child: TextField(
-                  //controller: _emailcontroller,
+                  controller: _emailController,
                   decoration: InputDecoration(
                     hintText: "Enter your email",
                     hintStyle: TextStyle(
@@ -144,30 +148,15 @@ class SignupScreen extends StatelessWidget {
               ),
               const VerticalSpacer(height: 8),
               Expanded(
-                flex:1,
-                child: TextField(
-                  //controller: _passwordcontroller,
-                  decoration: InputDecoration(
-                    hintText: "Enter your password",
-                    hintStyle: TextStyle(
-                      fontSize: 14.sp,
-                      color: const Color(0xFF1A1A1A).withOpacity(0.2494),
-                    ),
-                    filled: true,
-                    fillColor: Colors.white,
-                    suffixIcon: Icon(
-                      Icons.remove_red_eye_outlined,
-                      size: 24.sp,
-                      color: Colors.black.withOpacity(0.1953),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10.w),
-                      borderSide: BorderSide(
-                        color: const Color(0xFF1A1A1A).withOpacity(0.1),
-                        width: 1.sp,
-                      ),
-                    ),
-                  ),
+                flex: 1,
+                child: PasswordTextField(
+                  controller: _passwordController,
+                  isPasswordVisible: _isPasswordVisible,
+                  togglePasswordVisibility: () {
+                    setState(() {
+                      _isPasswordVisible = !_isPasswordVisible;
+                    });
+                  },
                 ),
               ),
               const VerticalSpacer(height: 20),
@@ -179,59 +168,72 @@ class SignupScreen extends StatelessWidget {
               ),
               const VerticalSpacer(height: 8),
               Expanded(
-                flex:1,
-                child: TextField(
-                  decoration: InputDecoration(
-                    hintText: "Enter your password again",
-                    hintStyle: TextStyle(
-                      fontSize: 14.sp,
-                      color: const Color(0xFF1A1A1A).withOpacity(0.2494),
-                    ),
-                    filled: true,
-                    fillColor: Colors.white,
-                    suffixIcon: Icon(
-                      Icons.remove_red_eye_outlined,
-                      size: 24.sp,
-                      color: Colors.black.withOpacity(0.1953),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10.w),
-                      borderSide: BorderSide(
-                        color: const Color(0xFF1A1A1A).withOpacity(0.1),
-                        width: 1.sp,
-                      ),
+                flex: 1,
+                child: RetypePasswordTextField(
+                  controller: _retypePasswordController,
+                  isPasswordVisible: _isRetypePasswordVisible,
+                  togglePasswordVisibility: () {
+                    setState(() {
+                      _isRetypePasswordVisible = !_isRetypePasswordVisible;
+                    });
+                  },
+                ),
+              ),
+              if (_isPasswordMismatch)
+                Padding(
+                  padding: EdgeInsets.only(top: 8.w),
+                  child: Text(
+                    "Passwords do not match",
+                    style: TextStyle(
+                      fontSize: 12.sp,
+                      color: Colors.red,
                     ),
                   ),
                 ),
-              ),
               const VerticalSpacer(height: 20),
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   ElevatedButton(
-                  child:const Text("Next"),
-                  onPressed: (){
-                    //signUp();
-                    //_addTask();
-                    //print(_emailcontroller.text);
-                   Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-                    return BankScreen();
-                  }));
-                },)] ,
+                    child: const Text("Next"),
+                    onPressed: () {
+                      if (_passwordController.text ==
+                          _retypePasswordController.text) {
+                        signUp();
+                        Navigator.of(context)
+                            .push(MaterialPageRoute(builder: (context) {
+                          return BankScreen();
+                        }));
+                      } else {
+                        setState(() {
+                          _isPasswordMismatch = true;
+                        });
+                      }
+                    },
+                  )
+                ],
               ),
               const VerticalSpacer(height: 10),
               Expanded(
-                flex:1,
+                flex: 1,
                 child: SizedBox(
                   width: 375.w,
-                  child: Text(
-                    "Already have account?",
-                    style: TextStyle(
-                      color: Theme.of(context).colorScheme.primary,
-                      fontSize: 14.sp,
-                      fontWeight: FontWeight.w500,
+                  child: TextButton(
+                    onPressed: () {
+                      Navigator.of(context)
+                          .push(MaterialPageRoute(builder: (context) {
+                        return BankScreen();
+                      }));
+                    },
+                    child: Text(
+                      "Already have an account?",
+                      style: TextStyle(
+                        color: Theme.of(context).colorScheme.primary,
+                        fontSize: 14.sp,
+                        fontWeight: FontWeight.w500,
+                      ),
+                      textAlign: TextAlign.center,
                     ),
-                    textAlign: TextAlign.center,
                   ),
                 ),
               ),
@@ -242,8 +244,102 @@ class SignupScreen extends StatelessWidget {
     );
   }
 }
-    
 
+class PasswordTextField extends StatefulWidget {
+  final TextEditingController controller;
+  final bool isPasswordVisible;
+  final VoidCallback togglePasswordVisibility;
 
+  const PasswordTextField({
+    required this.controller,
+    required this.isPasswordVisible,
+    required this.togglePasswordVisibility,
+  });
 
-    
+  @override
+  _PasswordTextFieldState createState() => _PasswordTextFieldState();
+}
+
+class _PasswordTextFieldState extends State<PasswordTextField> {
+  @override
+  Widget build(BuildContext context) {
+    return TextField(
+      controller: widget.controller,
+      obscureText: !widget.isPasswordVisible,
+      decoration: InputDecoration(
+        hintText: "Enter your password",
+        hintStyle: TextStyle(
+          fontSize: 14.sp,
+          color: const Color(0xFF1A1A1A).withOpacity(0.2494),
+        ),
+        filled: true,
+        fillColor: Colors.white,
+        suffixIcon: IconButton(
+          icon: Icon(
+            widget.isPasswordVisible ? Icons.visibility_off : Icons.visibility,
+            size: 24.sp,
+            color: Colors.black.withOpacity(0.1953),
+          ),
+          onPressed: widget.togglePasswordVisibility,
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10.w),
+          borderSide: BorderSide(
+            color: const Color(0xFF1A1A1A).withOpacity(0.1),
+            width: 1.sp,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class RetypePasswordTextField extends StatefulWidget {
+  final TextEditingController controller;
+  final bool isPasswordVisible;
+  final VoidCallback togglePasswordVisibility;
+
+  const RetypePasswordTextField({
+    required this.controller,
+    required this.isPasswordVisible,
+    required this.togglePasswordVisibility,
+  });
+
+  @override
+  _RetypePasswordTextFieldState createState() =>
+      _RetypePasswordTextFieldState();
+}
+
+class _RetypePasswordTextFieldState extends State<RetypePasswordTextField> {
+  @override
+  Widget build(BuildContext context) {
+    return TextField(
+      controller: widget.controller,
+      obscureText: !widget.isPasswordVisible,
+      decoration: InputDecoration(
+        hintText: "Enter your password again",
+        hintStyle: TextStyle(
+          fontSize: 14.sp,
+          color: const Color(0xFF1A1A1A).withOpacity(0.2494),
+        ),
+        filled: true,
+        fillColor: Colors.white,
+        suffixIcon: IconButton(
+          icon: Icon(
+            widget.isPasswordVisible ? Icons.visibility_off : Icons.visibility,
+            size: 24.sp,
+            color: Colors.black.withOpacity(0.1953),
+          ),
+          onPressed: widget.togglePasswordVisibility,
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10.w),
+          borderSide: BorderSide(
+            color: const Color(0xFF1A1A1A).withOpacity(0.1),
+            width: 1.sp,
+          ),
+        ),
+      ),
+    );
+  }
+} 

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:pay_now/screens/settings_screen.dart';
 import 'package:pay_now/widgets/horizontal_spacer.dart';
 import 'package:pay_now/widgets/vertical_spacer.dart';
 
@@ -66,7 +67,7 @@ class ProfileScreen extends StatelessWidget {
                 ),
                 const VerticalSpacer(height: 8),
                 Text(
-                  "Hisham Zayadnh",
+                  "Jose Paul",
                   style: TextStyle(
                     fontSize: 16.sp,
                   ),
@@ -195,13 +196,16 @@ class ProfileScreen extends StatelessWidget {
                       ),
                     ),
                     const HorizontalSpacer(width: 14),
-                    Text(
-                      "Settings",
+                    TextButton(onPressed: (){
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                    return SettingsScreen();
+                  }));
+                    }, child:Text("Settings",
                       style: TextStyle(
                         fontSize: 14.sp,
                         fontWeight: FontWeight.w500,
                       ),
-                    ),
+                    )),
                     const Spacer(),
                     SizedBox(
                       width: 24.w,

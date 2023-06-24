@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:pay_now/screens/login_screen.dart';
 import 'package:pay_now/screens/signup_screen.dart';
-import 'package:pay_now/widgets/primary_button.dart';
+import 'LoginScreen.dart';
+import 'bankserver.dart';
 
-class LoginSignupScreen extends StatelessWidget {
-  const LoginSignupScreen({Key? key}) : super(key: key);
+class Login_Signup extends StatelessWidget {
+  Login_Signup({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -35,9 +35,9 @@ class LoginSignupScreen extends StatelessWidget {
             child: Container(
               width: 734.w,
               height: 734.h,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 shape: BoxShape.circle,
-                color:Colors.white,
+                color: Colors.white,
               ),
             ),
           ),
@@ -48,8 +48,8 @@ class LoginSignupScreen extends StatelessWidget {
               width: 250.w,
               height: 250.h,
               child: FittedBox(
-                child: Image.asset('assets/images/HLogo.png'),
                 fit: BoxFit.fill,
+                child: Image.asset('assets/images/HLogo.png'),
               ),
             ),
           ),
@@ -80,13 +80,13 @@ class LoginSignupScreen extends StatelessWidget {
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 30.w),
               child: ElevatedButton(
-                child: Text('Create account'),
                 onPressed: () {
                   Navigator.of(context)
                       .push(MaterialPageRoute(builder: (context) {
                     return SignupScreen();
                   }));
                 },
+                child: const Text('Create account'),
               ),
             ),
           ),
@@ -101,7 +101,7 @@ class LoginSignupScreen extends StatelessWidget {
                 }));
               },
               child: Text(
-                "Already have account?",
+                "Already have an account?",
                 style: TextStyle(
                   color: Theme.of(context).colorScheme.primary,
                   fontSize: 14.sp,
@@ -111,16 +111,27 @@ class LoginSignupScreen extends StatelessWidget {
               ),
             ),
           ),
-          // SizedBox(
-          //   width: 375.w,
-          //   child: Column(
-          //     children: [
-          //       VerticalSpacer(height: 212.h),
-
-          //       VerticalSpacer(height: 115.h),
-          //     ],
-          //   ),
-          // )
+          Positioned(
+            top: 16.h,
+            right: 16.w,
+            child: ElevatedButton(
+              onPressed: () {
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) {
+                  return BankServerScreen();
+                }));
+                // Add your desired functionality here
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.teal[100],
+                shape: CircleBorder(),
+              ),
+              child: Icon(
+                Icons.house,
+                color: Colors.white,
+              ),
+            ),
+          ),
         ],
       ),
     );

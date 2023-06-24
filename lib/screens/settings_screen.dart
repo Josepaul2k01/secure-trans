@@ -54,6 +54,7 @@ class SettingsScreen extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 20.sp,
                       fontWeight: FontWeight.w500,
+                      color: Colors.black,
                     ),
                   ),
                   SizedBox(

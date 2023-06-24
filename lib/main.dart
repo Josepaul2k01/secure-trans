@@ -1,14 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:pay_now/screens/contacts_screen.dart';
-
-import 'package:pay_now/screens/profile_screen.dart';
 import 'package:pay_now/screens/splash_screen.dart';
-import 'package:pay_now/screens/transactions_screen.dart';
-import 'package:pay_now/widgets/vertical_spacer.dart';
 import 'package:firebase_core/firebase_core.dart';
-void main() async{
+Future<void> main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(const MyApp());

@@ -1,17 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pay_now/screens/home.dart';
-
-import 'package:pay_now/screens/profile_screen.dart';
-import 'package:pay_now/screens/seed.dart';
-import 'package:pay_now/screens/reset_password_screen.dart';
-import 'package:pay_now/widgets/primary_button.dart';
 import 'package:pay_now/widgets/vertical_spacer.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:pay_now/screens/home.dart';
+
 class LoginScreen extends StatelessWidget {
   LoginScreen({Key? key}) : super(key: key);
-
 
   final _usernameController = TextEditingController();
 
@@ -30,21 +23,19 @@ class LoginScreen extends StatelessWidget {
           ),
         ),
         child: Padding(
-          padding: EdgeInsets.symmetric(
-            horizontal: 30.w,
-          ),
+          padding: const EdgeInsets.all(30),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const VerticalSpacer(height: 90/*80*/),
+              const VerticalSpacer(height: 40 /*80*/),
               Text(
-                "Login and Start Transfering",
+                "Login and Start Transferring",
                 style: TextStyle(
                   fontSize: 32.sp,
                   fontWeight: FontWeight.w700,
                 ),
               ),
-              const VerticalSpacer(height: 62),
+              const VerticalSpacer(height: 22),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -84,14 +75,14 @@ class LoginScreen extends StatelessWidget {
                   )
                 ],
               ),
-              const VerticalSpacer(height: 20/*93*/),
+              const VerticalSpacer(height: 20 /*93*/),
               Text(
                 "Email",
                 style: TextStyle(
                   fontSize: 14.sp,
                 ),
               ),
-              const VerticalSpacer(height: 2/*8*/),
+              const VerticalSpacer(height: 2 /*8*/),
               TextFormField(
                 controller: _usernameController,
                 decoration: InputDecoration(
@@ -111,14 +102,14 @@ class LoginScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              const VerticalSpacer(height: 15/*24*/),
+              const VerticalSpacer(height: 15 /*24*/),
               Text(
                 "Password",
                 style: TextStyle(
                   fontSize: 14.sp,
                 ),
               ),
-              const VerticalSpacer(height: 2/*8*/),
+              const VerticalSpacer(height: 2 /*8*/),
               TextFormField(
                 controller: _passwordController,
                 decoration: InputDecoration(
@@ -143,7 +134,7 @@ class LoginScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              const VerticalSpacer(height: 2/*8*/),
+              const VerticalSpacer(height: 2 /*8*/),
               SizedBox(
                 width: 375.w,
                 child: Text(
@@ -155,13 +146,13 @@ class LoginScreen extends StatelessWidget {
                   textAlign: TextAlign.end,
                 ),
               ),
-              const VerticalSpacer(height: 2/*92*/),
-              ElevatedButton(child:
-              const Text( "Login"),
-              onPressed: () {
-               
-                checkLogin(context);
-                },),
+              const VerticalSpacer(height: 2 /*92*/),
+              ElevatedButton(
+                child: const Text("Login"),
+                onPressed: () {
+                  checkLogin(context);
+                },
+              ),
               const VerticalSpacer(height: 2),
               SizedBox(
                 width: 375.w,
@@ -182,25 +173,24 @@ class LoginScreen extends StatelessWidget {
     );
   }
 
-    checkLogin(BuildContext ctx) {
-    final _username = _usernameController.text;
-    final _password = _passwordController.text;
-    if (_username == _password) {
+  checkLogin(BuildContext ctx) {
+    final username = _usernameController.text;
+    final password = _passwordController.text;
+    if (username == password) {
       //final _sharedprefes = await SharedPreferences.getInstance();
       //await _sharedprefes.setBool(Save_key,true);
-      Navigator.of(ctx).pushReplacement(MaterialPageRoute(builder: (ctx1)=>HomeScreen()));
+      Navigator.of(ctx).pushReplacement(
+          MaterialPageRoute(builder: (ctx1) => const HomeScreen()));
     } else {
-      final _errorMessage = 'Username password doesnot match';
-        ScaffoldMessenger.of(ctx).showSnackBar(SnackBar(
+      const errorMessage = 'Username password doesnot match';
+      ScaffoldMessenger.of(ctx).showSnackBar(const SnackBar(
           behavior: SnackBarBehavior.floating,
           backgroundColor: Colors.red,
           margin: EdgeInsets.all(20),
           duration: Duration(seconds: 2),
           content: Text(
-            _errorMessage,
+            errorMessage,
           )));
-
-
-
-    }}
+    }
+  }
 }
