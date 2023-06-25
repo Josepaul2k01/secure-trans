@@ -91,9 +91,11 @@ class _DashBoardState extends State<DashBoard> {
                       ),
                     ),
                     CircleAvatar(
+                      backgroundColor: Colors.white,
                       radius: 30.w,
-                      backgroundImage:
-                          const AssetImage("assets/images/Profile Picture.png"),
+                      child: Center(
+                        child:Icon(Icons.person_2_sharp,size: 60,)
+                      ),
                     ),
                   ],
                 ),

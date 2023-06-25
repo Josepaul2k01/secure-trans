@@ -4,7 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pay_now/screens/home.dart';
 import 'package:pay_now/screens/signup_screen.dart';
 import 'LoginScreen.dart';
-import 'bankserver.dart';
 
 class Login_Signup extends StatefulWidget {
   Login_Signup({Key? key}) : super(key: key);
@@ -145,28 +144,7 @@ class _Login_SignupState extends State<Login_Signup> {
               ),
             ),
           ),
-          Positioned(
-            top: 16.h,
-            right: 16.w,
-            child: ElevatedButton(
-              onPressed: () {
-                Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) {
-                  return BankServerScreen();
-                }));
-                // Add your desired functionality here
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.teal[100],
-                shape: CircleBorder(),
-              ),
-              child: Icon(
-                Icons.house,
-                color: Colors.white,
-              ),
-            ),
-          ),
-        ],
+                  ],
       ),
     );
   }

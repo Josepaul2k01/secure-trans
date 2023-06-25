@@ -22,19 +22,19 @@ class CardsScreen extends StatelessWidget {
 
   final List<Card> cards = [
     Card(
-      cardNumber: "1234  5678  9123  4567",
-      cardHolderName: "Tanya Robinson",
+      cardNumber: "1234  5678  9123  4561",
+      cardHolderName: "Ann Grace",
       expiryDate: "02/23",
     ),
     Card(
-      cardNumber: "1234  5678  9123  4567",
-      cardHolderName: "Tanya Robinson",
-      expiryDate: "02/23",
+      cardNumber: "4321  5078  9520  8507",
+      cardHolderName: "Ann Grace",
+      expiryDate: "04/24",
     ),
     Card(
-      cardNumber: "1234  5678  9123  4567",
-      cardHolderName: "Tanya Robinson",
-      expiryDate: "02/23",
+      cardNumber: "9876  5978  9823  1567",
+      cardHolderName: "Ann Grace",
+      expiryDate: "06/25",
     ),
   ];
 

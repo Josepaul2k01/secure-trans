@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pay_now/widgets/horizontal_spacer.dart';
 import 'package:pay_now/widgets/vertical_spacer.dart';
-import 'package:sqflite/sqflite.dart';
+
 class AddCardScreen extends StatelessWidget {
   const AddCardScreen({Key? key}) : super(key: key);
 

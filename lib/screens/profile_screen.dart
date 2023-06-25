@@ -55,19 +55,12 @@ class ProfileScreen extends StatelessWidget {
                   backgroundColor: Colors.white,
                   radius: 50.w,
                   child: Center(
-                    child: Text(
-                      "H",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 40.sp,
-                        color: const Color(0xFF1A1A1A),
-                      ),
+                    child: Icon(Icons.person,size: 60),
                     ),
                   ),
-                ),
                 const VerticalSpacer(height: 8),
                 Text(
-                  "Jose Paul",
+                  "User",
                   style: TextStyle(
                     fontSize: 16.sp,
                   ),

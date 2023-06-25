@@ -29,7 +29,6 @@ class _SignupScreenState extends State<SignupScreen> {
     if (_passwordController.text == _retypePasswordController.text) {
       await auth.createUserWithEmailAndPassword(
           email: _emailController.text, password: _passwordController.text);
-      // Get.to(()=BankScreen());
     } else {
       setState(() {
         _isPasswordMismatch = true;

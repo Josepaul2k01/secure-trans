@@ -101,7 +101,7 @@ class SettingsScreen extends StatelessWidget {
                   ),
                   const VerticalSpacer(height: 24),
                   Text(
-                    "Notifications",
+                    "Security",
                     style: TextStyle(
                       fontSize: 14.sp,
                       fontWeight: FontWeight.w500,
@@ -109,16 +109,16 @@ class SettingsScreen extends StatelessWidget {
                     ),
                   ),
                   const VerticalSpacer(height: 16),
-                  const OptionTile(
+                   OptionTile(
                     icon: 'notifications_icon',
-                    title: 'Push notifications',
+                    title: 'Notification & emails',
                     desc: 'For daily update and others.',
                   ),
                   const VerticalSpacer(height: 16),
                   const OptionTile(
                     icon: 'notifications_icon',
-                    title: 'Promotional notifications',
-                    desc: 'New campain and offers.',
+                    title: 'Privacy & Security',
+                    desc: 'Two factor authentication',
                   ),
                   const VerticalSpacer(height: 24),
                   Container(
