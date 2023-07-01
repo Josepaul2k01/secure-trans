@@ -139,7 +139,7 @@ class _DashBoardState extends State<DashBoard> {
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     Text(
-                      "\124.57",
+                      "\190.57",
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 40.sp,
