@@ -6,25 +6,19 @@ E-Wallet App
 
 -------------  
 
-
-
 -------------  
 
 ## Screens  
 - Splash Screen  
 - Onboarding Screens
-- Welcome Screen
 - Login Screen
 - Signup Screen
 - Home Screen 
 - Transactions Screen
-- Contacts Screen
 - Profile Screen
 - Send Money Screen
 - Request Money Screen
-- Requests Screen
 - Info Screen
 - My Cards Screen
-- Add Card Screen
-- Reset Password Screen
+- Add Card Scree
 - Settings Screen
