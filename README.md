@@ -5,7 +5,7 @@ E-Wallet App
 #### Desing Credit : By  [Jose Paul](https://www.figma.com/community/file/1090938020479002157)  
 
 -------------  
-
+![Example Image](splashscreen.png)
 
 
 -------------  
