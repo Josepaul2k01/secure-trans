@@ -8,9 +8,7 @@ Built using Flutter and Dart, SecureTrans provides a seamless and user-friendly 
 The application leverages Firebase as the backend infrastructure, offering reliable and scalable services. Firebase ensures real-time updates and secure data storage, enabling fast and secure transaction processing. 
 
 With SecureTrans, users can enjoy the convenience of making payments while maintaining a high level of security. By incorporating cellular automata principles and utilizing the power of Flutter, Dart, and Firebase, this application provides a robust and secure solution for digital transactions.
-E-Wallet App
-
-#### Desing Credit : By  [Jose Paul](https://www.figma.com/community/file/1090938020479002157)  
+E-Wallet App  
 
 -------------  
 <div style="display: flex; flex-wrap: wrap;">
